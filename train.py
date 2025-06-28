@@ -7,7 +7,7 @@ from data_loader import OCRDataGenerator, load_data
 images_paths, texts = load_data("data/labels.txt")  # Пути к изображениям и текстам
 
 # 2. Разделение на тренировочную и валидационную выборку
-split_idx = int(0.8 * len(images_paths))  # 80% на обучение, 20% на валидацию
+split_idx = int(0.8 * len(images_paths))
 train_images, train_texts = images_paths[:split_idx], texts[:split_idx]
 val_images, val_texts = images_paths[split_idx:], texts[split_idx:]
 
@@ -17,7 +17,7 @@ train_gen = OCRDataGenerator(
     batch_size=32,
     img_size=(128, 32),
     charset=CHARACTERS,
-    augment=True  # Аугментация для тренировки
+    augment=True
 )
 
 val_gen = OCRDataGenerator(
@@ -25,7 +25,7 @@ val_gen = OCRDataGenerator(
     batch_size=32,
     img_size=(128, 32),
     charset=CHARACTERS,
-    augment=False  # Без аугментации для валидации
+    augment=False
 )
 
 # 4. Создание модели
@@ -38,12 +38,12 @@ model.compile(optimizer=Adam(learning_rate=0.001), loss={"ctc_output": lambda y_
 checkpoint = ModelCheckpoint(
     "best_model.h5",
     monitor="val_loss",
-    save_best_only=True  # Сохраняет только лучшую модель
+    save_best_only=True
 )
 
 early_stop = EarlyStopping(
-    patience=5,  # Ждёт 5 эпох без улучшений
-    restore_best_weights=True  # Возвращает лучшие веса
+    patience=5,
+    restore_best_weights=True
 )
 
 # 7. Обучение
@@ -52,5 +52,5 @@ history = model.fit(
     validation_data=val_gen,
     epochs=100,
     callbacks=[checkpoint, early_stop],
-    verbose=1  # Вывод прогресса
+    verbose=1
 )

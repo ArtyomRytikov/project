@@ -3,16 +3,7 @@ from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Reshape, LSTM, 
 
 
 def build_crnn(input_shape, num_classes):
-    """
-    Создаёт модель CRNN для OCR.
 
-    Args:
-        input_shape (tuple): Размер входного изображения (H, W, C).
-        num_classes (int): Количество символов в алфавите + blank.
-
-    Returns:
-        Model: Готовая модель Keras.
-    """
     # 1. Входной слой (изображение)
     input_img = Input(shape=input_shape, name="image_input")
 

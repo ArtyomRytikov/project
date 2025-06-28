@@ -1,6 +1,5 @@
-# Пример функции для декодирования CTC
 def ctc_decode(predictions, charset):
-    # Greedy-декодирование
+    # декодирование
     text = ""
     last_char = -1
     for p in predictions:

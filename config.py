@@ -1,4 +1,3 @@
-# Пример содержимого:
 DATA_PATH = "data/images/"  # Путь к изображениям
 LABELS_PATH = "data/labels.txt"  # Путь к разметке
 IMAGE_WIDTH = 128  # Ширина изображения после ресайза

@@ -10,7 +10,7 @@ def predict_image(model, image_path, charset):
     img = img / 255.0
 
     pred = model.predict(np.array([img]))
-    # Декодирование CTC-вывода (например, через greedy-алгоритм)
+    # Декодирование CTC-вывода
     text = ""
     for p in pred[0]:
         if p != len(charset):  # Пропускаем blank-символ
